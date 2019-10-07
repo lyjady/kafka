@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="kafka-java" />
         <module name="kafka-spring-boot" />
+        <module name="kafka-java" />
       </profile>
     </annotationProcessing>
   </component>
