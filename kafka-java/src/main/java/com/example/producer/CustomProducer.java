@@ -13,10 +13,10 @@ import java.util.Properties;
 public class CustomProducer {
 
     public static void main(String[] args) throws InterruptedException {
-        Properties kafkaProperties = CommonUtils.getKafkaProperties();
+        Properties kafkaProperties = CommonUtils.getKafkaProducerProperties();
         KafkaProducer<String, String> producer = new KafkaProducer<>(kafkaProperties);
         for (int i = 0; i < 6; i++) {
-            producer.send(new ProducerRecord<>("java-api", "LYJ-" + i), ((recordMetadata, e) -> {
+            producer.send(new ProducerRecord<>("java-api", "key" + i, "LYJ-" + i), ((recordMetadata, e) -> {
                 if (e != null) {
                     e.printStackTrace();
                 } else {

@@ -1,6 +1,7 @@
 package com.example.utils;
 
 import com.example.partitioner.CustomPartitioner;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 
 import java.util.Properties;
@@ -13,7 +14,7 @@ public class CommonUtils {
 
     private static final String BOOTSTRAP_SERVERS = "linux:9092";
 
-    public static Properties getKafkaProperties() {
+    public static Properties getKafkaProducerProperties() {
         Properties properties = new Properties();
         //指定Kafka地址
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
@@ -34,6 +35,25 @@ public class CommonUtils {
         //指定自定义的分区器
 //        properties.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, "com.example.partitioner.CustomPartitioner");
 
+        return properties;
+    }
+
+    public static Properties getKafkaConsumerProperties() {
+        Properties properties = new Properties();
+        //指定kafka的地址
+        properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+        //指定key反序列化的方式
+        properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
+        //指定value反序列化的方式
+        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
+        //开启自动提交
+//        properties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
+//        //自动提交延迟
+//        properties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, 1000);
+        //消费者组
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG, "god6");
+        //开启offset重置类似命令行中的--from-beginning
+//        properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         return properties;
     }
 }
