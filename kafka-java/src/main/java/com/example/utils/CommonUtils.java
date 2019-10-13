@@ -47,11 +47,11 @@ public class CommonUtils {
         //指定value反序列化的方式
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
         //开启自动提交
-//        properties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
-//        //自动提交延迟
-//        properties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, 1000);
+        properties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
+        //自动提交延迟
+        properties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, 1000);
         //消费者组
-        properties.put(ConsumerConfig.GROUP_ID_CONFIG, "god6");
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG, "god");
         //开启offset重置类似命令行中的--from-beginning
 //        properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         return properties;

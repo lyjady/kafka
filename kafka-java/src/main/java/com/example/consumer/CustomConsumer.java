@@ -25,18 +25,6 @@ public class CustomConsumer {
             for (ConsumerRecord<String, String> record : records) {
                 System.out.println("key: " + record.key() + ", value: " + record.value() + ", 主题: " + record.topic() + ", 分区" + record.partition() + ", 偏移量: " + record.offset());
             }
-            consumer.commitAsync((map, e) -> {
-                if (e != null) {
-                    e.printStackTrace();
-                } else {
-                    for (Map.Entry<TopicPartition, OffsetAndMetadata> m : map.entrySet()) {
-                        TopicPartition key = m.getKey();
-                        OffsetAndMetadata value = m.getValue();
-                        System.out.println(key.topic());
-                        System.out.println(value.offset());
-                    }
-                }
-            });
         }
     }
 }
