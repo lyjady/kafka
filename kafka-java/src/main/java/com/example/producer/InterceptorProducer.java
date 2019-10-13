@@ -16,7 +16,7 @@ import java.util.Properties;
  */
 public class InterceptorProducer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Properties properties = CommonUtils.getKafkaProducerProperties();
         List<String> interceptors = new ArrayList<>();
         interceptors.add("com.example.interceptor.CountInterceptor");
@@ -26,6 +26,6 @@ public class InterceptorProducer {
         for (int i = 0; i < 5; i++) {
             producer.send(new ProducerRecord<>("java-api", "key-" + i, "Interceptor-" + i));
         }
-//        producer.close();
+        producer.close();
     }
 }

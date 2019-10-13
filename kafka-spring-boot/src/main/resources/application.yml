@@ -10,3 +10,10 @@ spring:
       retries: 1
       batch-size: 16384
       buffer-memory: 33554432
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      enable-auto-commit: true
+#      auto-commit-interval: 1000
+      group-id: god
+#      auto-offset-reset: earliest

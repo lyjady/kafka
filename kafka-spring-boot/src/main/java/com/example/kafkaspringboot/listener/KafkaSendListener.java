@@ -2,6 +2,7 @@ package com.example.kafkaspringboot.listener;
 
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
+import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.support.ProducerListener;
 import org.springframework.stereotype.Component;
 

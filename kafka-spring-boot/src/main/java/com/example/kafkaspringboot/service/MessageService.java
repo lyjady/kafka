@@ -15,8 +15,10 @@ public class MessageService {
     @Autowired
     private KafkaTemplate kafkaTemplate;
 
-    @Scheduled(fixedDelay = 1000)
+//    @Scheduled(fixedDelay = 1000)
     public void sendMessage() {
-        kafkaTemplate.send("java-api", "springboot-message");
+        for (int i = 0; i < 6; i++) {
+            kafkaTemplate.send("java-api", "springKey-" + i, "springboot-message-" + i);
+        }
     }
 }
